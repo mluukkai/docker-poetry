@@ -2,9 +2,13 @@ FROM python:3.10-bookworm
 
 WORKDIR /mydir
 
+RUN useradd -m appuser
+
+USER appuser
+
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
-CMD export PATH="/root/.local/bin:$PATH"; bash
+CMD export PATH="/home/appuser/.local/bin:$PATH"; bash
 
 # build:
 # docker build . --no-cache -t mluukkai/poetry:m1
