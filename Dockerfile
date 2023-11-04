@@ -8,7 +8,9 @@ USER appuser
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
-CMD export PATH="/home/appuser/.local/bin:$PATH"; bash
+ENV PATH="/home/appuser/.local/bin:$PATH"
+
+CMD bash
 
 # build:
 # docker build . --no-cache -t mluukkai/poetry:m1
